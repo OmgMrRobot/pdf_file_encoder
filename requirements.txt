@@ -1,0 +1,4 @@
+PyPDF2
+getpass
+pyfiglet
+tkinter
