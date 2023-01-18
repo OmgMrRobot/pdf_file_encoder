@@ -2,11 +2,12 @@ from PyPDF2 import PdfReader, PdfWriter
 from getpass import getpass
 from pyfiglet import Figlet
 from tkinter import filedialog
+from loguru import logger
 
 
 
 
-
+@logger.catch
 def pdf_coder(file_name: str, password: str):
     """Функция получает на вход pdf файл, перезаписывает и защищает его паролем """
 
@@ -24,6 +25,8 @@ def pdf_coder(file_name: str, password: str):
 
 
 if __name__ == '__main__':
+    logger.add("debug.json", format="{time} {level} {message}",
+               level='DEBAG', rotation='10:00', compression='zip')
 
     prew_text = Figlet('slant')
     print('\33[32m' + prew_text.renderText("PDf CODER") + '\033[0m')
